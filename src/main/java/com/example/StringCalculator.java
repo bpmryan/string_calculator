@@ -8,7 +8,7 @@ public class StringCalculator {
        
         // scenario where there is a comma 
         // dynamic loop to refactor any two-number solution 
-        String[] tokens = numbers.split(",");
+        String[] tokens = numbers.split(",|\n");
         int sum = 0;
         
         for (String token : tokens) {
