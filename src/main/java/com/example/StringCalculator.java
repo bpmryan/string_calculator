@@ -5,6 +5,15 @@ public class StringCalculator {
         if (numbers == null || numbers.isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(numbers);
+       
+        // scenario where there is a comma 
+        // dynamic loop to refactor any two-number solution 
+        String[] tokens = numbers.split(",");
+        int sum = 0;
+        
+        for (String token : tokens) {
+            sum += Integer.parseInt(token);
+        }
+        return sum;
     }
 }

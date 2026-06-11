@@ -18,4 +18,14 @@ public class StringCalculatorTest {
     public void testSingleNumberReturnsValue() {
         assertEquals(1, calc.add("1"));
     }
+
+    @Test 
+    public void testTwoNumbersCommmaSeparatedReturnsSum() {
+        assertEquals(3, calc.add("1,2"));
+    }
+
+    @Test 
+    public void testMultipleNumbersCommaSeparatedReturnsSum() {
+        assertEquals(15, calc.add("1,2,3,4,5"));
+    }
 }
