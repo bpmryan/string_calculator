@@ -38,4 +38,25 @@ public class StringCalculatorTest {
     public void testCustomDelimiterReturnsSum() {
         assertEquals(3, calc.add("//;\n1;2"));
     }
+
+    @Test
+    public void testNegativeNumberThrowsException() {
+        // Assert that an IllegalArgumentException is thrown
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            calc.add("-1,2");
+        });
+        
+        // Assert that the error message contains the offending negative number
+        assertEquals("Negatives not allowed: -1", exception.getMessage());
+    }
+
+    @Test
+    public void testMultipleNegativeNumbersThrowExceptionListingAll() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            calc.add("2,-3,5,-7");
+        });
+        
+        // Ensure ALL negative numbers are listed in the error message
+        assertEquals("Negatives not allowed: -3, -7", exception.getMessage());
+    }
 }

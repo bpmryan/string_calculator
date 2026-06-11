@@ -1,5 +1,8 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
     public int add(String numbers) {
         if (numbers == null || numbers.isEmpty()) {
@@ -21,10 +24,22 @@ public class StringCalculator {
         // dynamic loop to refactor any two-number solution
         String[] tokens = numbersWithoutPrefix.split(delimiter);
         int sum = 0;
+        // collection to store any negative numbers 
+        List<String> negatives = new ArrayList<>();
         
         for (String token : tokens) {
-            sum += Integer.parseInt(token);
+            int value = Integer.parseInt(token);
+            if (value < 0) {
+                negatives.add(token); //collect the violation
+            }
+            sum += value;
         }
+
+        // report all negative numbers at once if there are any
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException("Negatives not allowed: " + String.join(", ", negatives));
+        }
+
         return sum;
     }
 }
